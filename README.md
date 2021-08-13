@@ -11,3 +11,6 @@
 - Initialize a virtual enviroment
 - Setup up a python package dependency management file (requirements.txt)
 - Create a .gitignore file and exclude the virtual enviroment (venv)
+
+## Step 2
+- Import the datafiles from the link above and store them in a seperate Folder
