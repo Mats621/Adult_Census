@@ -1,0 +1,52 @@
+name: model-training
+on: [push]
+jobs:
+  model-training:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: train model
+        run: python Census_Train.py
+
+      - name: Upload trained model 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: DT_Adult_Census.pkl
+          path: Trained_Models/DT_Adult_Census.pkl # or path/to/artifact
+
+      - name: Upload trained model 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: KNN_Adult_Census.pkl
+          path: Trained_Models/KNN_Adult_Census.pkl # or path/to/artifact
+
+      - name: Upload trained model 3
+        uses: actions/upload-artifact@v2
+        with:
+          name: LR_Adult_Census.pkl
+          path: Trained_Models/LR_Adult_Census.pkl # or path/to/artifact
+      
+      - name: Upload trained model 4
+        uses: actions/upload-artifact@v2
+        with:
+          name: RF_Adult_Census.pkl
+          path: Trained_Models/RF_Adult_Census.pkl # or path/to/artifact
+
+      - name: Upload trained model 5
+        uses: actions/upload-artifact@v2
+        with:
+          name: SVM_Adult_Census.pkl
+          path: Trained_Models/SVM_Adult_Census.pkl # or path/to/artifact
